@@ -17,10 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Rml.CoNexus.API\Rml.CoNexus.API.csproj" />
+    <ProjectReference Include="..\CoNexus\CoNexus.csproj" />
     <ProjectReference Include="..\Rml.CoNexus.Core\Rml.CoNexus.Core.csproj" />
-    <ProjectReference Include="..\Rml.CoNexus.Eventing\Rml.CoNexus.Eventing.csproj" />
-    <ProjectReference Include="..\Rml.CoNexus.ReverseProfile\Rml.CoNexus.ReverseProfile.csproj" />
   </ItemGroup>
 
   <ItemGroup>

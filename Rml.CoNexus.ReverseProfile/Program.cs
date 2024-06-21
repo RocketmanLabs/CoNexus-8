@@ -1,9 +1,5 @@
-﻿using Rml.CoNexus.ReverseProfile;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Drawing;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Text.RegularExpressions;
 
 namespace Rml.CoNexus.ReverseProfile;
 
@@ -191,6 +187,8 @@ internal class Program
     {
         public ProfileDto(InputTemplate inp, Axis xaxis)
         {
+            if (inp.Weights is null) throw new ArgumentNullException(nameof(inp.Weights));
+            if (inp.Participants is null) throw new ArgumentNullException(nameof(inp.Participants));
             InquiryId = inp.InquiryId;
             Title = inp.Title;
             ProfileType = inp.ProfileType;
@@ -198,9 +196,11 @@ internal class Program
             YLabel = inp.Weights.Label;
             ParticipantIds = inp.Participants.Select(x => x.Id).ToArray();
         }
+
         public string Id { get; private set; } = Guid.NewGuid().ToString();
         public string InquiryId { get; set; }
         public string[] EvaluationIds { get; set; } // one/Profile, more when comparing
+
         public string? Title { get; set; }
         public string? SubTitle { get; set; }
         public string? XLabel { get; set; }
@@ -228,7 +228,47 @@ internal class Program
         public decimal X { get; set; } = -1;
         public decimal Y { get; set; } = -1;
     }
+    #region Axis stuff
+    public class Axis
+    {
+        public Axis() { }
 
+        [Key]
+        public string Id { get; set; } = Guid.NewGuid().ToString();
+
+        public string? AlternativeId { get; set; }      // set when Role is not WEIGHTS
+
+        [Required]
+        [StringLength(50)]
+        public string? Label { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string? AxisId { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string? Question { get; set; }
+
+        public VoteMethod Method { get; set; } = VoteMethod.UNKNOWN;
+
+        public AxisRole Role { get; set; } = AxisRole.UNKNOWN;
+
+        public Scale? AxisScale { get; set; }
+
+        public bool IsEmpty => Method is VoteMethod.UNKNOWN;
+    }
+    public class Axes : List<Axis>
+    {
+        public Axes() { }
+        public Axes(IEnumerable<Axis> items)
+        {
+            base.AddRange(items);
+        }
+
+        public Axis? this[string id] => base.Find(x => x.Id.Equals(id));
+    }
+    #endregion
     #region Topic stuff
     public class Topic
     {
@@ -246,64 +286,12 @@ internal class Program
          *      string Text;
          */
     }
-    public class Choice : Topic
-    {
-        /* Topic:
-         *      string Id;
-         *      string Text;
-         */
-
-        public ConsoleKey ChoiceKey { get; set; } = ConsoleKey.None;
-        public decimal Value { get; set; }
-
-        /* Topic:
-         *      string Id;
-         *      string Text;
-         * Choice:
-         *      ConsoleKey ChoiceKey;
-         *      decimal Value;
-         */
-    }
-    public class Choices : List<Choice>
-    {
-        public Choices(IEnumerable<Choice> items)
-        {
-            base.AddRange(items);
-        }
-    }
     public interface ISimRange
     {
         (decimal lowest, decimal highest) SimulationValueRange { get; set; }
     }
 
-    public class Cost : Topic, ISimRange
-    {
-        public Cost() { }
-
-        public Cost(decimal defaultValue, string units, decimal costWeight) { }
-
-        /* Topic:
-         *      string Id;
-         *      string Text;
-         */
-        public decimal Value { get; set; }
-        public decimal Weight { get; set; } = 1.0m;
-        public decimal Multiplier { get; set; } = 1.0m;
-        public string? Comment { get; set; }
-
-        // for simulation:
-        public (decimal lowest, decimal highest) SimulationValueRange { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        /* Topic:
-         *      string Id;
-         *      string Text;
-         * Cost:
-         *      decimal Value;
-         *      decimal Weight;
-         *      decimal Multiplier;
-         *      string Comment;
-         */
-    }
+   
     public class Criterion : Topic
     {
         public Criterion() { }
@@ -377,6 +365,54 @@ internal class Program
         public Alternative? this[string id] => base.Find(x => x.Id.Equals(id));
         // base allows this[int index]
     }
+    #region Cost stuff
+    public class Cost : Topic, ISimRange
+    {
+        public Cost() { }
+
+        public Cost(decimal defaultValue, string units, decimal costWeight) { }
+
+        /* Topic:
+         *      string Id;
+         *      string Text;
+         */
+
+        [Required]
+        public decimal Value { get; set; }
+
+        [Required]
+        public decimal Weight { get; set; } = 1.0m;
+
+        [Required]
+        public decimal Multiplier { get; set; } = 1.0m;
+
+        public string? Comment { get; set; }
+
+        // for simulation:
+        public (decimal lowest, decimal highest) SimulationValueRange { get; set; }
+
+        /* Topic:
+         *      string Id;
+         *      string Text;
+         * Cost:
+         *      decimal Value;
+         *      decimal Weight;
+         *      decimal Multiplier;
+         *      string Comment;
+         */
+    }
+    public class Costs : List<Cost>
+    {
+        public Costs() { }
+        public Costs(IEnumerable<Cost> items)
+        {
+            base.AddRange(items);
+        }
+
+        public Cost? this[string id] => base.Find(x => x.Id.Equals(id));
+        // base allows this[int index]
+    }
+    #endregion
     public class Criteria : List<Criterion>
     {
         public Criteria() { }
@@ -389,14 +425,34 @@ internal class Program
         // base allows this[int index]
     }
     #endregion
-    #region Scale & Demographics stuff
-    public class ScaleEntry : Topic
+    #region Choice, Scale, & Demographics stuff
+    public class Choice : Topic
     {
         /* Topic:
          *      string Id;
          *      string Text;
          */
 
+        public ConsoleKey ChoiceKey { get; set; } = ConsoleKey.None;
+        public decimal Value { get; set; }
+
+        /* Topic:
+         *      string Id;
+         *      string Text;
+         * Choice:
+         *      ConsoleKey ChoiceKey;
+         *      decimal Value;
+         */
+    }
+    public class Choices : List<Choice>
+    {
+        public Choices(IEnumerable<Choice> items)
+        {
+            base.AddRange(items);
+        }
+    }
+    public class ScaleEntry : Choice
+    {
         public ScaleEntry() { }
         public ScaleEntry(bool isPlaceholder)
         {
@@ -404,17 +460,27 @@ internal class Program
             IsPlaceholder = isPlaceholder;
         }
 
+        /* Topic:
+         *      string Id;
+         *      string Text;
+         * Choice:
+         *      ConsoleKey ChoiceKey;
+         *      decimal Value;
+         */
+
         public ConsoleKey SelectionKey { get; set; }
         public decimal Value { get; set; }
         public bool IsPlaceholder { get; set; }
         public bool InBottomScaleGroup { get; set; }
 
+
         /* Topic:
          *      string Id;
          *      string Text;
-         * ScaleEntry:
-         *      ConsoleKey SelectionKey;
+         * Choice:
+         *      ConsoleKey ChoiceKey;
          *      decimal Value;
+         * ScaleEntry:
          *      bool IsPlaceholder;
          *      bool InBottomScaleGroup;
          */
@@ -431,44 +497,12 @@ internal class Program
         }
 
         public string Id { get; private set; } = Guid.NewGuid().ToString();
-        public VoteMethod Method { get; private set; }
+        public VoteMethod Method { get; private set; } = VoteMethod.UNKNOWN;
         public string? Name { get; private set; }
-        public ConsoleKey[] LegalKeys { get; private set; }
-        public string[] ChoiceIds { get; private set; }
-        public string[] ChoiceText { get; private set; }
-    }
-    #endregion
-    #region Axis stuff
-    public class Axis
-    {
-        public Axis() { }
 
-        [Key]
-        public string Id { get; set; } = Guid.NewGuid().ToString();
-
-        public string? AlternativeId { get; set; }      // set when Role is not WEIGHTS
-
-        [Required]
-        [StringLength(50)]
-        public string? Label { get; set; }
-
-        public string? AxisId { get; set; }
-        public string? Question { get; set; }
-        public VoteMethod Method { get; set; } = VoteMethod.UNSPECIFIED;
-        public AxisRole Role { get; set; } = AxisRole.UNKNOWN;
-        public Scale? AxisScale { get; set; }
-
-        public bool IsEmpty => Method is VoteMethod.UNSPECIFIED;
-    }
-    public class Axes : List<Axis> 
-    {
-        public Axes() { }
-        public Axes(IEnumerable<Axis> items)
-        {
-            base.AddRange(items);
-        }
-
-        public Axis? this[string id] => base.Find(x=>x.Id.Equals(id));
+        public ConsoleKey[] LegalKeys { get; private set; } = [];
+        public string[] ChoiceIds { get; private set; } = [];
+        public string[] ChoiceText { get; private set; } = [];
     }
     #endregion
     #region Evaluation
