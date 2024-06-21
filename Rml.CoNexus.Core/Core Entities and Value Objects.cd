@@ -1,2 +1,144 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rml.CoNexus.Core.Inquiry">
+    <Position X="5.75" Y="8.75" Width="1.5" />
+    <AssociationLine Name="Criteria" Type="Rml.CoNexus.Core.Criterion" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.75" Y="9.062" />
+        <Point X="4.5" Y="9.062" />
+        <Point X="4.5" Y="7.934" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Profile" Type="Rml.CoNexus.Core.Profile" FixedToPoint="true">
+      <Path>
+        <Point X="7.25" Y="9.562" />
+        <Point X="7.75" Y="9.562" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="People" Type="Rml.CoNexus.Core.Participant" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.938" Y="8.75" />
+        <Point X="6.938" Y="7.867" />
+        <Point X="9" Y="7.867" />
+        <Point X="9" Y="5.877" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAIAAAUAAAAAAAAAAAAAAAAAAABAABAAAAAA=</HashCode>
+      <FileName>Inquiry.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Profile" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Criteria" />
+      <Property Name="Axes" />
+      <Property Name="People" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Rml.CoNexus.Core.Criterion">
+    <Position X="3.5" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Criterion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rml.CoNexus.Core.Profile">
+    <Position X="7.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgEAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Profile.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Points" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Rml.CoNexus.Core.ProfilePoint">
+    <Position X="9.75" Y="9.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAACAAAYAA=</HashCode>
+      <FileName>ProfilePoint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rml.CoNexus.Core.Topic">
+    <Position X="2.25" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Topic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rml.CoNexus.Core._EntityBase">
+    <Position X="4.75" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>BAQCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>_EntityBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rml.CoNexus.Core.Scale">
+    <Position X="9.5" Y="6.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scale.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rml.CoNexus.Core.Choice">
+    <Position X="1.5" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgQAAAAAA=</HashCode>
+      <FileName>Choice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rml.CoNexus.Core.Axis">
+    <Position X="5.75" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAEAAAAAAAAAAgAQAAAAAAAAAEAAAAAAEAAAA=</HashCode>
+      <FileName>Axis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rml.CoNexus.Core.Evaluation">
+    <Position X="10.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AKAAAEAAAAAAAQAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Evaluation.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Votes" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Rml.CoNexus.Core.EvaluationExtensions">
+    <Position X="10.25" Y="5.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EvaluationExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rml.CoNexus.Core.Vote">
+    <Position X="12.5" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAACAAAMAIAAAAAAAAAIAAAAIAAAAAAAQA=</HashCode>
+      <FileName>Vote.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rml.CoNexus.Core.Participant">
+    <Position X="8" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Participant.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rml.CoNexus.Core.Extensions.VoteExtensions">
+    <Position X="12.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extensions\VoteExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rml.CoNexus.Core.ScaleEntry">
+    <Position X="1.25" Y="8.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ScaleEntry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

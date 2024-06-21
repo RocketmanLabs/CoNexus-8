@@ -14,7 +14,7 @@ public class Axis : _EntityBase
 
     public int Sequence { get; set; }
     public AxisAssignment Assignment { get; set; } = AxisAssignment.CONTRIBUTIONS;
-    public string label { get; set; } = "?";
+    public string Label { get; set; } = "?";
     public string Question { get; set; } = "?";
     public VoteMethod Method { get; set; } = VoteMethod.UNKNOWN;
     public Scale VotingScale { get; set; } = new();
