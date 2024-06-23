@@ -17,8 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CoNexus\CoNexus.csproj" />
     <ProjectReference Include="..\Rml.CoNexus.Core\Rml.CoNexus.Core.csproj" />
+    <ProjectReference Include="..\Rml.CoNexus.Sandbox\Rml.CoNexus.Sandbox.csproj" />
   </ItemGroup>
 
   <ItemGroup>

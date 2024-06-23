@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Rml.CoNexus.Core.CnxEvaluation.Evaluation">
+    <Position X="0.5" Y="4.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CnxEvaluation\Evaluation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rml.CoNexus.Core.CnxEvaluation.Evaluations">
+    <Position X="0.5" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CnxEvaluation\Evaluations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rml.CoNexus.Core.CnxEvaluation.Vote">
+    <Position X="0.5" Y="11.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAACAAAMAIAAAAAAAAAIAAAAIAAAAAAAQA=</HashCode>
+      <FileName>CnxEvaluation\Vote.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rml.CoNexus.Core.CnxEvaluation.ScreenDto">
+    <Position X="9.25" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAEAAAAASAAAAAAAAAAgAAAAAAhAAAAEAAAAAAABAAQ=</HashCode>
+      <FileName>CnxEvaluation\ScreenDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rml.CoNexus.Core.CnxEvaluation.Votes">
+    <Position X="0.5" Y="8.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAIBIAEAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>CnxEvaluation\Votes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rml.CoNexus.Core.CnxEvaluation.Axes">
+    <Position X="5.75" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CnxEvaluation\Axes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rml.CoNexus.Core.CnxEvaluation.Axis" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="8.5" Width="2" />
+    <InheritanceLine Type="Rml.CoNexus.Core.Cnx._EntityBase" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8" Y="3.853" />
+        <Point X="8" Y="8.875" />
+        <Point X="7.75" Y="8.875" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAEAAAAIAAAAAgAQAAAAAAAAAEAAAAAAEAAAA=</HashCode>
+      <FileName>CnxEvaluation\Axis.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Rml.CoNexus.Core.CnxEvaluation.AxisVotes">
+    <Position X="0.5" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>CnxEvaluation\AxisVotes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rml.CoNexus.Core.Cnx._EntityBase">
+    <Position X="6" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>BAQSAAAAAAAgAAQAAAAAAAAAAAAAAAAAAAAACQAAEAA=</HashCode>
+      <FileName>Cnx\_EntityBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Rml.CoNexus.Core.Inquiry">
+    <Position X="3.25" Y="2.25" Width="2" />
+    <AssociationLine Name="Evaluations" Type="Rml.CoNexus.Core.CnxEvaluation.Evaluation" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.938" Y="4.767" />
+        <Point X="3.938" Y="5.652" />
+        <Point X="2.75" Y="5.652" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Axes" Type="Rml.CoNexus.Core.CnxEvaluation.Axis" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.625" Y="4.767" />
+        <Point X="4.625" Y="8.938" />
+        <Point X="5.75" Y="8.938" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAIAAIUAAAAAAAAAAAAAAAQAABAAABAAAAAA=</HashCode>
+      <FileName>Cnx\Inquiry.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Evaluations" />
+      <Property Name="Axes" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Rml.CoNexus.Core.Extensions.VoteExtensions">
+    <Position X="3" Y="11.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAABAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extensions\VoteExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

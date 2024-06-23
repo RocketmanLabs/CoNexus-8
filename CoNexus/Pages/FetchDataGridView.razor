@@ -1,0 +1,56 @@
+﻿@page "/fetchdata-gridview"
+@inherits ControlComponent
+@inject HttpClient Http
+
+<div>
+    <h1>Weather forecast (GridView)</h1>
+    <asp.Button Text="Load Data" OnClick="this.Button_Click"></asp.Button>
+    <hr />
+    <asp.Label @ref="this.label"></asp.Label>
+    <br />
+    <asp.GridView @ref="this.gridview" AutoGenerateColumns="false" CssClass="table" AllowPaging="true"
+                  PageSize="2" OnPageIndexChanging="this.GridView_PageIndexChanging">
+        <Columns>
+            <asp.BoundField HeaderText="Date" DataField="Date" DataFormatString="{0:yyyy/M/d}"></asp.BoundField>
+            <asp.BoundField HeaderText="Temp. (C)" DataField="TemperatureC"></asp.BoundField>
+            <asp.BoundField HeaderText="Temp. (F)" DataField="TemperatureF"></asp.BoundField>
+            <asp.BoundField HeaderText="Summary" DataField="Summary"></asp.BoundField>
+        </Columns>
+    </asp.GridView>
+</div>
+
+@code {
+    private WeatherForecast[] forecasts;
+    private Label label;
+    private GridView gridview;
+
+    protected async void Button_Click(object sender, EventArgs e)
+    {
+        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+
+        label.Text = DateTime.Now.ToString();
+
+        gridview.PageIndex = 0;
+        gridview.DataSource = forecasts;
+        gridview.DataBind();
+
+        this.RequestRefresh();
+    }
+
+    protected void GridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        gridview.PageIndex = e.NewPageIndex;
+        gridview.DataBind();
+    }
+
+    public class WeatherForecast
+    {
+        public DateTime Date { get; set; }
+
+        public int TemperatureC { get; set; }
+
+        public string Summary { get; set; }
+
+        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    }
+}

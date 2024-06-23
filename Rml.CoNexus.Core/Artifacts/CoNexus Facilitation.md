@@ -9,8 +9,8 @@ Welcome...
 | Group | A collection of Participants associated with a particular Inquiry. | |
 | Inquiry | CoNexus sessions are organized around Inquiries. Inquiries contain their Group(s), TopicLists, Evaluations, and Results. | |
 | Participant | A Contact that has accepted an invitation to participate. | |
-| Topic | A single idea, strategy or goal (Criteria), or a single scenario or alternate plan (Alternatives). | Between 8 and 20 Criteria are recommended (minimum = 2); Alternatives can have 1-n entries. |
-| TopicList | A list of Topics to be used in Evaluations. | Each Inquiry is based primarily around two lists: 1) Alternatives or scenarios; 2) Criteria (a.k.a. strategies, goals, etc. | |
+| Topic | A single idea, strategy or goal (TopicList), or a single scenario or alternate plan (Criterions). | Between 8 and 20 TopicList are recommended (minimum = 2); Criterions can have 1-n entries. |
+| TopicList | A list of Topics to be used in Evaluations. | Each Inquiry is based primarily around two lists: 1) Criterions or scenarios; 2) TopicList (a.k.a. strategies, goals, etc. | |
 
 ... developed when all participants were together in one place.  This is called a **Same Time/Same Place** (STSP) session, and there are three others:
 
@@ -27,19 +27,19 @@ Participants voted at the same time, as choices were presented on the shared scr
 
 An Inquiry consists of the following elements:
 1. A group of participants
-2. A list of Alternatives or scenarios. All Inquiries have one Alternative, called "Current".
-3. A list of 8-20+ Criteria, strategies, or goals.
+2. A list of Alternatives or scenarios. All Inquiries an Alternatives collection with at least one entry, called "Current".
+3. A list of 8-20+ criteria (Topics), strategies, or goals.
 4. An Evaluation protocol, consisting of:
-> a. Paired comparison voting (also called forced choice) where every Criteria is compared to every other one.  This yields the Importance axis of the results.
+> a. Paired comparison voting (also called forced choice) where every Topic (criteria) is compared to every other one.  This yields the Importance axis of the results.
 > b. A survey yielding the Performance or Satisfaction axis of the results.
 > c. Other data collection, including participant demographics, as required.
 
-The Evaluation step is repeated for each defined Alternative. After all Alternatives have been considered, results are shown.  
+The Evaluation step is repeated for each defined Axis. After all Axes have been evaluated, results can be shown.  
 
 Results display the data from evaluation in ways designed to promote discussion of shared goals and key differences.  The Profile is one such visualization. 
-> a. The main Profile shows each Criteria plotted according to its average Importance and Performance scores.
+> a. The main Profile shows each criteria plotted according to its average Importance and Performance scores.
 > b. Individual Profiles show where each individual voted. They are often delivered to each participant along with the main Profile to show where they voted.
-> c. Consensus Profiles show (anonymously) where each participant voted on each single Criteria.  These profiles represent the agreement in the group on priorities and performance. 
+> c. Consensus Profiles show (anonymously) where each participant voted on each single TopicList.  These profiles represent the agreement in the group on priorities and performance. 
 
 <hr/>
 

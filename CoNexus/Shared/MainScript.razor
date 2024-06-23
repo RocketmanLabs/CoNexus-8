@@ -1,0 +1,29 @@
+﻿@inherits ControlComponent
+@code {
+    protected override void OnLoad(object sender, EventArgs e)
+    {
+        if (!this.Page.IsPostBack)
+        {
+            this.ClientScript.RegisterStartupScript(this.GetType(), "AdminLTE.Load"
+                , @"
+hideProcessLoading();
+$('body').Layout();
+$('body').overlayScrollbars({ });
+$('[data-toggle=""push-menu""]').PushMenu('init');
+$('[data-widget=""treeview""]').Treeview('init');
+$('.sidebar').overlayScrollbars({ });
+");
+            this.NavigationManager.LocationChanged += this.NavigationManager_LocationChanged;
+        }
+    }
+
+    protected void NavigationManager_LocationChanged(object sender, LocationChangedEventArgs e)
+    {
+        this.ClientScript.RegisterStartupScript(this.GetType(), "LoadValidators"
+            , @"
+if (typeof(DotNet_LoadValidators) == 'function') {
+DotNet_LoadValidators();
+}
+");
+    }
+}

@@ -7,12 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Artifacts\" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <Folder Include="Dto\" />
+    <Folder Include="1. Create or Open Inquiry\" />
+    <Folder Include="2. Elicit Topics\" />
+    <Folder Include="4. Prioritize Topics\" />
+    <Folder Include="3. Manage Participants\" />
+    <Folder Include="NewFolder\" />
   </ItemGroup>
 
 </Project>
